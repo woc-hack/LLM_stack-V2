@@ -4,13 +4,12 @@
 
 ## full
 zcat data/the-stack-v2-train.gz | 
-sed "s|.*content_id': '||;s|', .*'repo_name': '|;|;s|', .*||" | 
-sed 's|/|_|' |
+sed "s|.*content_id': '||;s|', .*'repo_name': '|;|;s|', .*||;s|/|_|" |
 ~/lookup/splitSec.perl data/full/b2p. 128
 
 ## smol
 zcat data/the-stack-v2-train-smol-ids.train.gz |
-sed "s|.*repo_name': '||;s|'.*'files': |;|" |
+sed "s|.*repo_name': '||;s|'.*'files': |;|;s|/|_|" |
 perl -ane '
     ($p,@rest)=split(/;/);
     $r=join ";",@rest;
@@ -26,7 +25,6 @@ awk -F\; '{
         print $i,$1
     }
 }' |
-sed 's|/|_|' |
 ~/lookup/splitSec.perl data/smol/b2p. 128
 
 ## sort
