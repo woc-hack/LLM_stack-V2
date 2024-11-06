@@ -86,3 +86,5 @@ done
 for b in {full,smol}; do
     rm data/$b/b2p.{0..127}
 done
+
+# endregion 3
