@@ -4,7 +4,7 @@
 
 ## full
 zcat data/the-stack-v2-train.gz | 
-sed "s|.*content_id': '||;s|', .*'repo_name': '|;|;s|', .*||;s|/|_|" |
+sed "s|', 'snapshot_id.*||;s|.*content_id': '||;s|', .*'repo_name': '|;|;s|/|_|" |
 ~/lookup/splitSec.perl data/full/b2p. 128
 
 ## smol
