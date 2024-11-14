@@ -90,3 +90,18 @@ for b in {full,smol}; do
     ~/utils/sort.sh -t\; |
     gzip >"data/$b/Plnb2uPl.s"
 done
+
+# stat
+for b in {full,smol}; do
+    echo $b
+    zcat "data/$b/Plnb2uPl.s" |
+    sed 's|0_public$|permissive|;
+        s|1_permissive$|permissive|;
+        s|2_conditional$|restrictive|;
+        s|3_weak$|restrictive|;
+        s|4_copyleft$|restrictive|' |
+    awk -F\; '{OFS=";"; print $2,$5,$3}' |
+    ~/utils/sort.sh -t\; |
+    ~/utils/sum_count.sh
+    echo
+done
