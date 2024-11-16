@@ -49,3 +49,8 @@ awk -F\; '{OFS=";"; if ($3!="") print $1,$2,$3}' |
 ~/utils/sort.sh -u |
 gzip >data/bugs/c2bnb.smol.gz
 
+# smol cve complete
+zcat data/bugs/b2ccveSmall |
+~/utils/sort.sh -t\; -u |
+join -t\; - <(zcat data/bugs/bSmallNext.s) |
+gzip >data/bugs/b2ca.smol.gz
