@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# table 1
+# -------------------- blob sample --------------------
 for batch in {full,smol}; do
     echo "Dataset: $batch"
 
@@ -43,7 +43,7 @@ for batch in {full,smol}; do
     echo
 done
 
-# table 2
+# -------------------- update commit sample --------------------
 for batch in {full,smol}; do
     echo "Dataset: $batch"
 
@@ -111,7 +111,7 @@ for batch in {full,smol}; do
     echo
 done
 
-# table 3
+# -------------------- CVEs in smol dataset --------------------
 n1=$(zcat b2ca.smol.gz | cut -d\; -f1 | ~/utils/sort.sh -u | wc -l)
 n2=$(zcat b2ca.smol.gz | cut -d\; -f2 | ~/utils/sort.sh -u | wc -l)
 n3=$(zcat b2ca.smol.gz | cut -d\; -f3 | ~/utils/sort.sh -u | wc -l)
